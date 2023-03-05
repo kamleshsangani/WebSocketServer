@@ -1,0 +1,25 @@
+{
+  "name": "socketserver",
+  "version": "1.0.0",
+  "description": "hello world",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamleshsangani/WebSocketServer.git"
+  },
+  "keywords": [
+    "socket"
+  ],
+  "author": "kamlesh",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/kamleshsangani/WebSocketServer/issues"
+  },
+  "homepage": "https://github.com/kamleshsangani/WebSocketServer#readme",
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
+  }
+}
