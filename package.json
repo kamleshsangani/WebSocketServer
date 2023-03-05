@@ -5,8 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node app.js",
-    "build": "webpack --config webpack.config.js"
+    "build": "node app.js"
   },
   "repository": {
     "type": "git",
