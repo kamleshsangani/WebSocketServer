@@ -5,7 +5,7 @@ const app = express()
 const port = process.env.PORT || 7878; //port for https
 
 app.get('/', (req, res) => {
-    res.send("Hello World from WebSocket Server 1");
+    res.send("Hello World from WebSocket Server 2");
 });
 
 app.listen(port, () => {
