@@ -4,7 +4,7 @@ const moment = require('moment')
 const app = express()
 const port = process.env.PORT || 7878; //port for https
 
-app.get('/', (req, res) => {
+app.get('/myapp/chat/', (req, res) => {
     res.send("Hello World from WebSocket Server 2");
 });
 
@@ -15,6 +15,7 @@ var  webSockets = {}
 
 const wss = new WebSocket.Server({ port: 6060 }) //run websocket server with port 6060
 wss.on('connection', function (ws, req)  {
+    console.log('URL:' + req.url)
     var userID = req.url.substr(1) //get userid from URL ip:6060/userid
     webSockets[userID] = ws //add new user to the connection list
 
@@ -28,21 +29,23 @@ wss.on('connection', function (ws, req)  {
             var data = JSON.parse(datastring)
             if(data.auth == "chatapphdfgjd34534hjdfk"){
                 if(data.cmd == 'send'){
+                    console.log(data.userid);
                     var boardws = webSockets[data.userid] //check if there is reciever connection
                     if (boardws){
                         var cdata = "{'cmd':'" + data.cmd + "','userid':'"+data.userid+"', 'msgtext':'"+data.msgtext+"'}";
                         boardws.send(cdata); //send message to reciever
+                        console.log(data.cmd + ":success");
                         ws.send(data.cmd + ":success");
                     }else{
                         console.log("No reciever user found.");
                         ws.send(data.cmd + ":error");
-                    }
+                    }   
                 }else{
                     console.log("No send command");
                     ws.send(data.cmd + ":error");
                 }
             }else{
-                console.log("App Authincation error");
+                console.log("App Authincatnmion error");
                 ws.send(data.cmd + ":error");
             }
         }else{
